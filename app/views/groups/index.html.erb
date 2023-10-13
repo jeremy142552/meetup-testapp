@@ -1,0 +1,43 @@
+<!-- app/views/groups/index.html.erb -->
+
+<div class="container">
+  <h1>Groups</h1>
+
+  <ul class="list-group">
+    <% @groups.each do |group| %>
+      <li class="list-group-item">
+        <%= link_to group.name, group %>
+      </li>
+      <% end %>
+  </ul>
+  <h2>Organizers</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @organizers.each do |user| %>
+        <tr>
+          <td>
+            <%= user.first_name %>
+          </td>
+          <td>
+            <%= user.last_name %>
+          </td>
+          <td>
+            <%= user.role %>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to 'New Group' , new_group_path, class: 'btn btn-primary' %>
+
+    <!-- Add button to redirect to CSV upload page -->
+    <%= link_to 'Upload CSV' , upload_csv_groups_path, class: 'btn btn-secondary' %>
+</div>
